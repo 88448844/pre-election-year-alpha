@@ -38,7 +38,7 @@ def create_pdf(filename):
     
     # 2. Empirical Findings
     Story.append(Paragraph("2. EMPIRICAL FINDINGS (1950-2024)", styles['QuantHeader']))
-    Story.append(Paragraph("The performance disparity is structural. Year 3 offers double-digit mean returns with significantly suppressed volatility ($\sigma=10.86\%$).", styles['QuantBody']))
+    Story.append(Paragraph(u"The performance disparity is structural. Year 3 offers double-digit mean returns with significantly suppressed volatility (\u03C3 = 10.86%).", styles['QuantBody']))
     Story.append(Spacer(1, 6))
     
     # Detailed Data Table
@@ -50,10 +50,10 @@ def create_pdf(filename):
     
     data = [
         ['Cycle Phase', 'Mean Rtn', 'Volatility', 'Sharpe', 'Max DD', 'Win Rate'],
-        ['Year 1: Post-Election', '8.36%', '17.68%', '0.47', '-17.37%', '—'],
-        ['Year 2: Midterm', '3.68%', '20.37%', '0.18', '-29.72%', '—'],
+        ['Year 1: Post-Election', '8.36%', '17.68%', '0.47', '-17.37%', u'\u2014'],
+        ['Year 2: Midterm', '3.68%', '20.37%', '0.18', '-29.72%', u'\u2014'],
         ['Year 3: Pre-Election', '17.18%', '10.86%', '1.58', '-0.73%', '89%'],
-        ['Year 4: Election', '8.11%', '14.41%', '0.56', '-38.49%', '—'],
+        ['Year 4: Election', '8.11%', '14.41%', '0.56', '-38.49%', u'\u2014'],
         ['Benchmark (Buy & Hold)', '9.41%', '16.57%', '0.57', '-41.92%', '73%']
     ]
     
@@ -76,9 +76,9 @@ def create_pdf(filename):
     # 3. Statistical Validity
     Story.append(Paragraph("3. STATISTICAL VALIDITY", styles['QuantHeader']))
     stats_text = """
-    We test the null hypothesis $H_0: \mu_{Year3} \le \mu_{Other}$ using a one-tailed Welch's t-test.
+    We test the null hypothesis H0: Mean(Year 3) <= Mean(Other) using a one-tailed Welch's t-test.
     <br/>&bull; T-Statistic: 3.0532
-    <br/>&bull; P-Value: 0.0018 ($< 0.01$)
+    <br/>&bull; P-Value: 0.0018 (< 0.01)
     <br/><br/><b>Conclusion:</b> The outperformance is statistically significant at the 99% confidence level.
     """
     Story.append(Paragraph(stats_text, styles['QuantBody']))
