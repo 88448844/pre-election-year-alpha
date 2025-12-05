@@ -31,8 +31,29 @@ The disparity is structural and profound. Year 3 offers double-digit mean return
 | Year 2: Midterm | 3.68% | 20.37% | 0.18 | -29.72% | — |
 | **Benchmark (Buy & Hold)** | 9.41% | 16.57% | 0.57 | -41.92% | 73% |
 
-> [!IMPORTANT]
-> **Key Insight:** An investor holding the S&P 500 *only* during Year 3 (and Cash otherwise) would have experienced a **Maximum Drawdown of less than 1%** over nearly a century.
+
+## 🏛️ Phase 2: Institutional Grade "Level Up"
+
+We escalated the analysis from annual observation to rigorous factor modeling.
+
+### Key Enhancements
+- **Daily Granularity**: 75 years of daily data (19,000+ rows).
+- **Fama-French 3-Factor Model**: Controlling for Market ($R_{mkt}$), Size ($SMB$), and Value ($HML$).
+- **Bootstrap Validation**: 10,000 Monte Carlo simulations confirm statistical significance ($p=0.0067$).
+
+### Advanced Metrics (Daily Data)
+| Metric | Year 3 (Institutional) | Benchmark (Buy & Hold) | Is it Real? |
+| :--- | :---: | :---: | :---: |
+| **Max Drawdown** | **-33.51%** | -56.78% | ✅ Significantly Safer |
+| **Bootstrap P-Value** | **0.0067** | — | ✅ Highly Significant |
+| **Alpha T-Stat** | **> 3.0** | — | ✅ Robust |
+
+### 📂 New Artifacts
+| File | Description |
+| :--- | :--- |
+| `Institutional_Research.ipynb` | 📓 **Full Jupyter Notebook** with reproducible code & charts. |
+| `Institutional_Research_Paper.pdf` | 📄 **6-Page Deep Dive** including regression tables & equity curves. |
+| `institutional_analysis.py` | 🐍 Source code for Rolling OLS and Bootstrapping. |
 
 ## 🧪 Statistical Validity
 
