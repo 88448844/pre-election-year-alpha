@@ -1,0 +1,6 @@
+yfinance
+pandas
+scipy
+numpy
+tabulate
+reportlab

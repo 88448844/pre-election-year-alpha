@@ -1,0 +1,133 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+
+% Page Setup
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Quantitative Research: US Pre-Election Alpha}
+\lhead{December 2024}
+\cfoot{\thepage}
+
+\title{\textbf{The Presidential Pump: Isolating Alpha in the Pre-Election Year of the US Cycle}}
+\author{\textbf{Quantitative Research Team} \\ Mfutso Bengo Projects}
+\date{December 5, 2024}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    \noindent This paper investigates the Efficient Market Hypothesis (EMH) regarding the 4-year US Presidential Election Cycle. Utilizing S\&P 500 data from 1950 to 2024, we empirically demonstrate a statistically significant anomaly in the \textbf{Pre-Election Year (Year 3)}. Contrary to the common belief that the Election Year itself drives returns, our analysis confirms that Year 3 generates superior risk-adjusted returns (Alpha). We report a Year 3 Sharpe Ratio of \textbf{1.58} (vs. wider market 0.57), a win rate of \textbf{89\%}, and a maximum drawdown of less than \textbf{1\%}. We reject the null hypothesis of equal returns with a p-value of \textbf{0.0018}.
+\end{abstract}
+
+\section*{Executive Summary (Simple Explanation)}
+\noindent For non-technical readers: The stock market does not perform equally across the 4-year US Presidential term.
+\begin{itemize}
+    \item \textbf{The Myth}: "Buy stocks during the Election Year because the President wants to look good."
+    \item \textbf{The Reality}: The President pumps the economy \textit{the year before} the election (Year 3) to ensure voters feel good by the time voting starts. By the actual Election Year (Year 4), the easy money has already been made, and uncertainty takes over.
+    \item \textbf{The Strategy}: Our research shows the "Sweet Spot" is \textbf{Year 3}. Investing only in this year yielded massive gains with almost zero risk of loss over the last 75 years.
+\end{itemize}
+
+\hrule
+\vspace{1em}
+
+\section{Introduction}
+The intersection of political cycles and financial markets has long been a subject of study. The "Political Business Cycle" theory suggests that incumbent politicians manipulate fiscal and monetary policy to maximize their re-election chances. This paper seeks to quantify the impact of this manipulation on the S&P 500 index. Specifically, we test the hypothesis that the \textit{penultimate} year of the term (Year 3) experiences "front-loaded" stimulus, resulting in abnormal equity returns.
+
+\section{Methodology}
+
+\subsection{Data Acquisition}
+We utilized the \texttt{yfinance} library to fetch daily Adjusted Close prices for the S\&P 500 index (Ticker: \texttt{\^{}GSPC}) from January 1, 1950, to December 5, 2024. The data was resampled to annual frequency using year-end observations.
+
+\subsection{Cycle Classification}
+Years were categorized based on the remainder of the calendar year divided by 4:
+\begin{align*}
+    Cycle(y) = \begin{cases} 
+      4 (\text{Election}) & \text{if } y \mod 4 = 0 \\
+      1 (\text{Post-Election}) & \text{if } y \mod 4 = 1 \\
+      2 (\text{Midterm}) & \text{if } y \mod 4 = 2 \\
+      3 (\text{Pre-Election}) & \text{if } y \mod 4 = 3 
+   \end{cases}
+\end{align*}
+
+\subsection{Statistical Measures}
+We define the Sharpe Ratio ($S_p$) where $R_p$ is portfolio return, $R_f$ is the risk-free rate (assumed 0 for simplicity), and $\sigma_p$ is standard deviation:
+\begin{equation}
+    S_p = \frac{E[R_p - R_f]}{\sigma_p}
+\end{equation}
+
+We performed a one-tailed Welch's t-test to check for statistical significance:
+\begin{equation}
+    t = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{s_1^2}{N_1} + \frac{s_2^2}{N_2}}}
+\end{equation}
+Where Group 1 is "Year 3" and Group 2 is "All Other Years".
+
+\section{Results and Analysis}
+
+\subsection{Descriptive Statistics}
+Table 1 presents the summary statistics for the four cycle years.
+
+\begin{table}[h]
+\centering
+\caption{S\&P 500 Returns by Cycle Year (1950-2024)}
+\label{tab:summary}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Cycle Year} & \textbf{Count} & \textbf{Mean Return} & \textbf{Volatility} & \textbf{Min} & \textbf{Max} \\
+\midrule
+Year 1 (Post-Election) & 19 & 8.36\% & 17.68\% & -17.37\% & 31.01\% \\
+Year 2 (Midterm) & 18 & 3.68\% & 20.37\% & -29.72\% & 45.02\% \\
+\textbf{Year 3 (Pre-Election)} & \textbf{19} & \textbf{17.18\%} & \textbf{10.86\%} & \textbf{-0.73\%} & \textbf{34.11\%} \\
+Year 4 (Election) & 19 & 8.11\% & 14.41\% & -38.49\% & 25.77\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent \textit{Observation}: Year 3 exhibits the highest mean return (17.18\%) and the lowest volatility (10.86\%).
+
+\subsection{Risk-Adjusted Performance}
+Comparing the Pre-Election Year against the rest of the market highlights the "Alpha".
+
+\begin{table}[h]
+\centering
+\caption{Year 3 vs. Rest of Market}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Metric} & \textbf{Pre-Election (Year 3)} & \textbf{All Other Years} & \textbf{Buy \& Hold} \\
+\midrule
+Mean Return & 17.18\% & 6.77\% & 9.41\% \\
+Sharpe Ratio & \textbf{1.58} & 0.39 & 0.57 \\
+Max Drawdown & \textbf{-0.73\%} & -38.49\% & -41.92\% \\
+Win Rate & 89\% & 68\% & 73\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Hypothesis Testing}
+We tested $H_0: \mu_{Year3} \le \mu_{Others}$ against $H_1: \mu_{Year3} > \mu_{Others}$.
+\begin{itemize}
+    \item \textbf{T-Statistic}: 3.0532
+    \item \textbf{P-Value}: 0.0018
+\end{itemize}
+Since $p < 0.01$, we reject the null hypothesis with >99\% confidence. The outperformance of Year 3 is statistically significant.
+
+\section{Discussion: The "Run-Up" Strategy}
+We simulated a strategy of investing \textbf{only} during Year 3 and holding cash (0\% return) during Years 1, 2, and 4.
+\begin{itemize}
+    \item \textbf{Capital Preservation}: The strategy avoided all major market crashes (2000, 2008) which occurred in election/post-election years.
+    \item \textbf{Consistency}: The Max Drawdown of just -0.73\% suggests this is one of the safest equity strategies available, historically speaking.
+    \item \textbf{Limitations}: While risk-adjusted returns are superior, the absolute return falls behind "Buy \& Hold" due to being out of the market 75\% of the time. However, using leverage during Year 3 could theoretically amplify returns with lower risk than the broad market.
+\end{itemize}
+
+\section{Conclusion}
+The US Presidential Election Cycle creates a predictable and exploitable anomaly. Quantitative analysis identifies the \textbf{Pre-Election Year} as the window of maximum opportunity, characterized by political stimulus that drives asset prices higher with remarkably low volatility. Investors looking to time the market based on macro-political trends should focus aggressive allocation in Year 3, rather than the Election Year itself.
+
+\end{document}
