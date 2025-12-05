@@ -80,6 +80,6 @@ The "Election Cycle" alpha is not in the election year itself, but in the run-up
 
 ---
 <div align="center">
-    <b>Quantitative Research Team - Mfutso Bengo Projects</b><br/>
+    <b>Quantitative Research Team - Gabriel Bengo</b><br/>
     <i>Past performance is not indicative of future results.</i>
 </div>
